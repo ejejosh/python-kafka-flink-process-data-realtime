@@ -39,7 +39,7 @@ def produce_historical_news(
             symbol=symbol,
             start=start_date,
             end=end_date,
-            limit=5,
+            limit=2000,
             sort=Sort.ASC,
             include_content=False,
         )
@@ -50,7 +50,7 @@ def produce_historical_news(
             if not should_proceed:
                 continue
 
-            timestamp_ms = int(row.created_at.timestamp() * 1600)
+            timestamp_ms = int(row.created_at.timestamp() * 1000)
             timestamp = datetime.fromtimestamp(row.created_at.timestamp())
             article['timestamp'] = timestamp.strftime('&Y-%m-%d %H:%M:*S')
             article['timestamp_ms'] = timestamp_ms
